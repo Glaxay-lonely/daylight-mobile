@@ -1,0 +1,16 @@
+{
+  "name": "daylight-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "向光 - 轻量习惯与专注管理移动应用",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "test": "node tests/domain.test.mjs",
+    "check": "node --check js/app.js && node --check js/domain.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

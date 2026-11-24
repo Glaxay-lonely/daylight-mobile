@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f7f1" />
+    <meta name="description" content="向光 - 用轻量、安静的方式记录习惯与专注时间。" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/assets/app-icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/icon-192.png" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>向光 · 每日习惯</title>
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path>
+      </symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </symbol>
+      <symbol id="icon-droplet" viewBox="0 0 24 24">
+        <path d="M12 2.7 6.7 8a7.5 7.5 0 1 0 10.6 0L12 2.7z"></path>
+      </symbol>
+      <symbol id="icon-footprints" viewBox="0 0 24 24">
+        <path d="M4 16v-2.4C4 11 5.8 9 8 9s4 2 4 4.6V16c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2z"></path>
+        <path d="M12 8V5.6C12 2.5 13.8 0 16 0s4 2.5 4 5.6V8c0 1.1-.9 2-2 2h-4c-1.1 0-2-.9-2-2z"></path>
+        <path d="M14 22c-1.1 0-2-.9-2-2v-2h4v2c0 1.1-.9 2-2 2zM2 20c0 1.1.9 2 2 2s2-.9 2-2v-2H2v2z"></path>
+      </symbol>
+      <symbol id="icon-coffee" viewBox="0 0 24 24">
+        <path d="M10 2v2M14 2v2M18 2v2M4 8h14v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8zM18 10h1a3 3 0 0 1 0 6h-1M6 22h12"></path>
+      </symbol>
+      <symbol id="icon-brain" viewBox="0 0 24 24">
+        <path d="M9.5 4A3.5 3.5 0 0 0 6 7.5c0 .4.1.8.2 1.2A4 4 0 0 0 4 12a4 4 0 0 0 2.2 3.6A3.5 3.5 0 0 0 9.5 21H12v-7"></path>
+        <path d="M14.5 4A3.5 3.5 0 0 1 18 7.5c0 .4-.1.8-.2 1.2A4 4 0 0 1 20 12a4 4 0 0 1-2.2 3.6A3.5 3.5 0 0 1 14.5 21H12v-7"></path>
+        <path d="M9.5 9H7M17 9h-2.5M9 15H7M17 15h-2"></path>
+      </symbol>
+      <symbol id="icon-house" viewBox="0 0 24 24">
+        <path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z"></path>
+        <path d="M9 21v-8h6v8"></path>
+      </symbol>
+      <symbol id="icon-repeat" viewBox="0 0 24 24">
+        <path d="m17 2 4 4-4 4"></path>
+        <path d="M3 11V9a4 4 0 0 1 4-4h14M7 22l-4-4 4-4"></path>
+        <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+      </symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24">
+        <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path>
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 21a8 8 0 0 1 16 0"></path>
+      </symbol>
+      <symbol id="icon-bell" viewBox="0 0 24 24">
+        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"></path>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m20 6-11 11-5-5"></path>
+      </symbol>
+      <symbol id="icon-flame" viewBox="0 0 24 24">
+        <path d="M12 22c4.4 0 8-3.6 8-8 0-3-1.5-5.6-4-8 .2 2.4-.8 4-2 4.5C14 7 12 4.5 12 2c-1.5 2-4 5.4-4 9 0 1.7.1 3 1 4.5 1.2-1 2-2.5 2-4.5 2 2 5 5 5 8 0 1.7-1.3 3-3 3s-3-1.3-3-3"></path>
+      </symbol>
+      <symbol id="icon-timer" viewBox="0 0 24 24">
+        <circle cx="12" cy="13" r="8"></circle>
+        <path d="M12 9v4l2 2M9 2h6"></path>
+      </symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24">
+        <path d="m6 3 15 9-15 9V3z"></path>
+      </symbol>
+      <symbol id="icon-pause" viewBox="0 0 24 24">
+        <path d="M8 4v16M16 4v16"></path>
+      </symbol>
+      <symbol id="icon-reset" viewBox="0 0 24 24">
+        <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path>
+        <path d="M3 3v5h5"></path>
+      </symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3A1.7 1.7 0 0 0 10 3v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1z"></path>
+      </symbol>
+      <symbol id="icon-trash" viewBox="0 0 24 24">
+        <path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6M10 11v6M14 11v6"></path>
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24">
+        <path d="M18 6 6 18M6 6l12 12"></path>
+      </symbol>
+      <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m9 18 6-6-6-6"></path>
+      </symbol>
+      <symbol id="icon-sparkles" viewBox="0 0 24 24">
+        <path d="m12 3-1.2 3.8L7 8l3.8 1.2L12 13l1.2-3.8L17 8l-3.8-1.2L12 3zM5 15l-.7 2.3L2 18l2.3.7L5 21l.7-2.3L8 18l-2.3-.7L5 15zM19 13l-.7 2.3L16 16l2.3.7L19 19l.7-2.3L22 16l-2.3-.7L19 13z"></path>
+      </symbol>
+      <symbol id="icon-download" viewBox="0 0 24 24">
+        <path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path>
+      </symbol>
+    </svg>
+
+    <div class="app-shell">
+      <header class="app-header">
+        <button class="brand" type="button" data-view-target="today" aria-label="向光首页">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span>
+          </span>
+          <span class="brand-name">向光</span>
+        </button>
+        <button class="avatar-button" type="button" data-view-target="profile" aria-label="打开个人中心">
+          <span id="header-initials">LC</span>
+          <span class="status-dot" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <main id="main-content">
+        <section class="view is-active" id="view-today" data-view="today" aria-labelledby="today-title">
+          <div class="view-intro">
+            <p class="date-line" id="today-date">11月24日 · 星期二</p>
+            <h1 id="today-title"><span id="greeting-text">早上好</span>，<span id="profile-name">林澄</span></h1>
+            <p class="intro-copy">不追赶时间，只把今天过得清楚一点。</p>
+          </div>
+
+          <section class="momentum-section" aria-labelledby="momentum-title">
+            <div class="section-kicker">
+              <span id="momentum-title">今日节奏</span>
+              <span class="soft-pill" id="today-count">0 / 5 项</span>
+            </div>
+            <div class="momentum-layout">
+              <div class="progress-ring" id="progress-ring" role="img" aria-label="今日完成度 0%">
+                <div class="progress-center">
+                  <strong id="progress-value">0%</strong>
+                  <span>已完成</span>
+                </div>
+              </div>
+              <div class="momentum-copy">
+                <span class="eyebrow">DAILY NOTE</span>
+                <h2 id="momentum-title-text">从一件小事开始</h2>
+                <p id="momentum-copy">完成一个习惯，今天就会向前一点。</p>
+              </div>
+            </div>
+            <div class="mini-metrics">
+              <div>
+                <span>连续记录</span>
+                <strong><span id="best-streak">19</span> 天</strong>
+              </div>
+              <div>
+                <span>今日专注</span>
+                <strong><span id="focus-total">50</span> 分钟</strong>
+              </div>
+              <div>
+                <span>本周完成</span>
+                <strong><span id="week-total">0</span> 次</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section" aria-labelledby="today-habits-title">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">YOUR ROUTINE</span>
+                <h2 id="today-habits-title">今天要做</h2>
+              </div>
+              <button class="icon-button" type="button" data-open-add aria-label="添加习惯">
+                <svg class="icon"><use href="#icon-plus"></use></svg>
+              </button>
+            </div>
+            <div class="habit-list" id="today-habits"></div>
+          </section>
+
+          <section class="focus-section" aria-labelledby="focus-title">
+            <div class="focus-topline">
+              <div class="focus-title-group">
+                <span class="focus-icon">
+                  <svg class="icon"><use href="#icon-timer"></use></svg>
+                </span>
+                <div>
+                  <span class="eyebrow">DEEP FOCUS</span>
+                  <h2 id="focus-title">专注一会儿</h2>
+                </div>
+              </div>
+              <span class="focus-duration" id="focus-duration">25 分钟</span>
+            </div>
+            <div class="timer-row">
+              <strong id="timer-display" aria-live="polite">25:00</strong>
+              <div class="timer-actions">
+                <button class="icon-button icon-button-dark" id="timer-toggle" type="button" aria-label="开始专注">
+                  <svg class="icon" id="timer-play-icon"><use href="#icon-play"></use></svg>
+                </button>
+                <button class="icon-button" id="timer-reset" type="button" aria-label="重置计时器">
+                  <svg class="icon"><use href="#icon-reset"></use></svg>
+                </button>
+              </div>
+            </div>
+            <div class="timer-track" aria-hidden="true"><span id="timer-progress"></span></div>
+          </section>
+
+          <section class="mood-section" aria-labelledby="mood-title">
+            <div>
+              <span class="eyebrow">CHECK IN</span>
+              <h2 id="mood-title">此刻感觉如何？</h2>
+            </div>
+            <div class="mood-options" id="mood-options" role="group" aria-label="选择今日心情">
+              <button type="button" data-mood="calm" aria-label="平静" title="平静">
+                <span aria-hidden="true">◡</span>
+              </button>
+              <button type="button" data-mood="good" aria-label="不错" title="不错">
+                <span aria-hidden="true">⌣</span>
+              </button>
+              <button type="button" data-mood="tired" aria-label="有点累" title="有点累">
+                <span aria-hidden="true">﹏</span>
+              </button>
+              <button type="button" data-mood="busy" aria-label="忙碌" title="忙碌">
+                <span aria-hidden="true">•ᴗ•</span>
+              </button>
+            </div>
+          </section>
+
+          <blockquote class="daily-quote">
+            <svg class="icon"><use href="#icon-sparkles"></use></svg>
+            <p>“不必每天都很厉害，只要每天都在靠近。”</p>
+          </blockquote>
+        </section>
+
+        <section class="view" id="view-habits" data-view="habits" aria-labelledby="habits-title" hidden>
+          <div class="view-intro compact-intro">
+            <span class="eyebrow">YOUR ROUTINES</span>
+            <h1 id="habits-title">我的习惯</h1>
+            <p class="intro-copy">把想做的事，放进每天都能看见的地方。</p>
+          </div>
+
+          <div class="habit-summary">
+            <div>
+              <span>正在坚持</span>
+              <strong><span id="habit-count">5</span> 个习惯</strong>
+            </div>
+            <div class="summary-marks" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="filter-tabs" role="tablist" aria-label="按时间筛选习惯">
+            <button class="is-active" type="button" data-filter="all" role="tab" aria-selected="true">全部</button>
+            <button type="button" data-filter="morning" role="tab" aria-selected="false">早晨</button>
+            <button type="button" data-filter="afternoon" role="tab" aria-selected="false">午后</button>
+            <button type="button" data-filter="evening" role="tab" aria-selected="false">晚间</button>
+          </div>
+
+          <div class="habit-list full-list" id="all-habits"></div>
+
+          <button class="primary-action" type="button" data-open-add>
+            <svg class="icon"><use href="#icon-plus"></use></svg>
+            添加一个新习惯
+          </button>
+        </section>
+
+        <section class="view" id="view-insights" data-view="insights" aria-labelledby="insights-title" hidden>
+          <div class="view-intro compact-intro">
+            <span class="eyebrow">YOUR PROGRESS</span>
+            <h1 id="insights-title">看见变化</h1>
+            <p class="intro-copy">数据不是考核，只是你认真生活的痕迹。</p>
+          </div>
+
+          <div class="insight-grid">
+            <article class="metric-card metric-card-accent">
+              <span>本周完成</span>
+              <strong><span id="insight-week-total">0</span><small> 次</small></strong>
+              <p>比上周多 3 次</p>
+            </article>
+            <article class="metric-card">
+              <span>专注时长</span>
+              <strong><span id="insight-focus-total">50</span><small> 分钟</small></strong>
+              <p>保持专注，也记得休息</p>
+            </article>
+          </div>
+
+          <section class="chart-section" aria-labelledby="week-chart-title">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">THIS WEEK</span>
+                <h2 id="week-chart-title">一周节奏</h2>
+              </div>
+              <span class="chart-legend"><i></i> 完成数</span>
+            </div>
+            <div class="bar-chart" id="week-chart" aria-label="一周习惯完成统计"></div>
+          </section>
+
+          <section class="streak-section" aria-labelledby="streak-title">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">CONSISTENCY</span>
+                <h2 id="streak-title">连续记录</h2>
+              </div>
+              <span class="streak-badge">
+                <svg class="icon"><use href="#icon-flame"></use></svg>
+                <span id="insight-streak">19</span> 天
+              </span>
+            </div>
+            <div class="heatmap" id="heatmap" aria-label="近四周打卡记录"></div>
+            <div class="heatmap-labels">
+              <span>4 周前</span>
+              <span>今天</span>
+            </div>
+          </section>
+
+          <section class="reflection-section">
+            <span class="reflection-icon">
+              <svg class="icon"><use href="#icon-sparkles"></use></svg>
+            </span>
+            <div>
+              <span class="eyebrow">WEEKLY REFLECTION</span>
+              <h2>你有 3 个晚上按时写完了日记。</h2>
+              <p>睡前的那几分钟，正在成为你一天里安静的收尾。</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="view-profile" data-view="profile" aria-labelledby="profile-title" hidden>
+          <div class="profile-hero">
+            <div class="profile-avatar" id="profile-avatar">LC</div>
+            <div>
+              <span class="eyebrow">PROFILE</span>
+              <h1 id="profile-title"><span id="profile-full-name">林澄</span></h1>
+              <p id="profile-motto">把注意力留给真正重要的事</p>
+            </div>
+          </div>
+
+          <div class="profile-stats">
+            <div><strong id="profile-days">42</strong><span>记录天数</span></div>
+            <div><strong id="profile-habits">5</strong><span>习惯数量</span></div>
+            <div><strong id="profile-rate">72%</strong><span>平均完成</span></div>
+          </div>
+
+          <section class="settings-section" aria-labelledby="settings-title">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">PREFERENCES</span>
+                <h2 id="settings-title">偏好设置</h2>
+              </div>
+            </div>
+            <div class="settings-list">
+              <div class="setting-row">
+                <span class="setting-icon"><svg class="icon"><use href="#icon-bell"></use></svg></span>
+                <div class="setting-copy">
+                  <strong>每日提醒</strong>
+                  <span>在合适的时间提醒打卡</span>
+                </div>
+                <button class="switch" id="toggle-reminders" type="button" role="switch" aria-checked="true" aria-label="每日提醒">
+                  <span></span>
+                </button>
+              </div>
+              <div class="setting-row">
+                <span class="setting-icon"><svg class="icon"><use href="#icon-timer"></use></svg></span>
+                <div class="setting-copy">
+                  <strong>专注提示音</strong>
+                  <span>计时结束时播放轻提示音</span>
+                </div>
+                <button class="switch" id="toggle-sound" type="button" role="switch" aria-checked="false" aria-label="专注提示音">
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="utility-section">
+            <button class="utility-row" id="install-app" type="button">
+              <span class="setting-icon"><svg class="icon"><use href="#icon-download"></use></svg></span>
+              <span><strong>安装到手机</strong><small>像原生应用一样打开</small></span>
+              <svg class="icon chevron"><use href="#icon-chevron"></use></svg>
+            </button>
+            <button class="utility-row danger" id="reset-today" type="button">
+              <span class="setting-icon"><svg class="icon"><use href="#icon-reset"></use></svg></span>
+              <span><strong>重置今天</strong><small>清空今日打卡和专注记录</small></span>
+              <svg class="icon chevron"><use href="#icon-chevron"></use></svg>
+            </button>
+          </section>
+
+          <p class="app-version">向光 1.0 · 愿你把日子过成自己喜欢的样子</p>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="主导航">
+        <button class="is-active" type="button" data-view-target="today" aria-current="page">
+          <svg class="icon"><use href="#icon-house"></use></svg>
+          <span>今日</span>
+        </button>
+        <button type="button" data-view-target="habits">
+          <svg class="icon"><use href="#icon-repeat"></use></svg>
+          <span>习惯</span>
+        </button>
+        <button type="button" data-view-target="insights">
+          <svg class="icon"><use href="#icon-chart"></use></svg>
+          <span>洞察</span>
+        </button>
+        <button type="button" data-view-target="profile">
+          <svg class="icon"><use href="#icon-user"></use></svg>
+          <span>我的</span>
+        </button>
+      </nav>
+    </div>
+
+    <dialog class="sheet-dialog" id="add-habit-dialog">
+      <form method="dialog" id="add-habit-form">
+        <div class="dialog-header">
+          <div>
+            <span class="eyebrow">NEW ROUTINE</span>
+            <h2>添加习惯</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-dialog aria-label="关闭">
+            <svg class="icon"><use href="#icon-x"></use></svg>
+          </button>
+        </div>
+
+        <label class="field">
+          <span>习惯名称</span>
+          <input name="name" type="text" maxlength="24" placeholder="例如：睡前阅读" required autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span>一句提醒</span>
+          <input name="note" type="text" maxlength="40" placeholder="例如：读 15 页就够了" autocomplete="off" />
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>时间</span>
+            <input name="time" type="text" maxlength="10" value="20:30" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>时段</span>
+            <select name="category">
+              <option value="morning">早晨</option>
+              <option value="afternoon">午后</option>
+              <option value="evening">晚间</option>
+              <option value="all-day">全天</option>
+            </select>
+          </label>
+        </div>
+
+        <fieldset class="choice-field">
+          <legend>选择图标</legend>
+          <div class="icon-choices">
+            <label><input type="radio" name="icon" value="sun" checked /><span><svg class="icon"><use href="#icon-sun"></use></svg></span></label>
+            <label><input type="radio" name="icon" value="book" /><span><svg class="icon"><use href="#icon-book"></use></svg></span></label>
+            <label><input type="radio" name="icon" value="droplet" /><span><svg class="icon"><use href="#icon-droplet"></use></svg></span></label>
+            <label><input type="radio" name="icon" value="footprints" /><span><svg class="icon"><use href="#icon-footprints"></use></svg></span></label>
+            <label><input type="radio" name="icon" value="coffee" /><span><svg class="icon"><use href="#icon-coffee"></use></svg></span></label>
+            <label><input type="radio" name="icon" value="brain" /><span><svg class="icon"><use href="#icon-brain"></use></svg></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="choice-field">
+          <legend>选择颜色</legend>
+          <div class="color-choices">
+            <label><input type="radio" name="color" value="mint" checked /><span class="color-mint"></span></label>
+            <label><input type="radio" name="color" value="apricot" /><span class="color-apricot"></span></label>
+            <label><input type="radio" name="color" value="blue" /><span class="color-blue"></span></label>
+            <label><input type="radio" name="color" value="lime" /><span class="color-lime"></span></label>
+          </div>
+        </fieldset>
+
+        <button class="dialog-submit" type="submit">开始这个习惯</button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>
